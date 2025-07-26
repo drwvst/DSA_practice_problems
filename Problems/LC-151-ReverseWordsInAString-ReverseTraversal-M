@@ -1,0 +1,23 @@
+class Solution {
+    public String reverseWords(String s) {
+        StringBuilder fin = new StringBuilder();
+        StringBuilder temp = new StringBuilder();
+        int pointer = s.length()-1;
+
+        while(pointer >= 0){
+            while(pointer >= 0 && s.charAt(pointer) == ' '){
+                pointer--;
+            }
+
+            if (pointer < 0) break;
+
+            while (pointer >= 0 && s.charAt(pointer) != ' ') {
+                temp.append(s.charAt(pointer));
+                pointer--;
+            }
+            fin.append(temp.reverse()).append(" ");
+            temp.setLength(0);
+        }
+        return fin.toString().trim();
+    }
+}
