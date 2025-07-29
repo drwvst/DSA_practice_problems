@@ -1,0 +1,23 @@
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+
+        Map<String, List<String>> anagramTracker = new HashMap<>();
+        for(String s : strs){
+            String sorted = sortString(s);
+            if(anagramTracker.containsKey(sorted)){
+                anagramTracker.get(sorted).add(s);
+            } else {
+                List<String> list = new ArrayList<>();
+                list.add(s);
+                anagramTracker.put(sorted, list);
+            }
+        }
+        return new ArrayList<>(anagramTracker.values());
+    }
+
+    public String sortString(String str){
+        char[] arr = str.toCharArray();
+        Arrays.sort(arr);
+        return new String(arr);
+    }
+}
